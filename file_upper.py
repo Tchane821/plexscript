@@ -1,19 +1,20 @@
 import os
+from os.path import isdir
 #saisie
-racine = input("Entrez le chemin de la racine des fichies a remonter")
-if not racine.isdir() :
-    print("Erreur dans la saisie du dossier racine")
+racine = input("Entrez le chemin de la racine des fichies a remonter\n")
+if not isdir(racine):
+    print("Erreur dans la saisie du dossier racine\n")
     exit(1)
 
-ndr = input("Entrez le nom du dossier de destination") # Nom de Dossier de Reception
-if not ndr.isdir():
+ndr = input("Entrez le nom du dossier de destination\n") # Nom de Dossier de Reception
+if not isdir(ndr):
     os.mkdir(ndr)
 
 #extraction
 def listefile(rac):
     res = []
     for pathh in os.listdir(rac) :
-        if pathh.isdir() :
+        if isdir(pathh) :
             for f in listefile(rac.join(pathh)):
                 res.append(f)
         else :

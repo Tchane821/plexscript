@@ -1,5 +1,7 @@
 import os
 from os.path import isdir
+import glob
+
 #saisie
 racine = input("Entrez le chemin de la racine des fichies a remonter\n")
 if not isdir(racine):
@@ -11,13 +13,7 @@ if not isdir(ndr):
     os.mkdir(ndr)
 
 #extraction
-def listefile(rac):
-    res = []
-    for pathh in os.listdir(rac) :
-        if isdir(pathh) :
-            for f in listefile(rac.join(pathh)):
-                res.append(f)
-        else :
-            res.append(pathh)
+path_to_file_list = glob.glob(racine + '*mp4 | *mkv | *avi' )
 
-print(listefile(racine))
+for path_to_file in path_to_file_list:
+    print(path_to_file)

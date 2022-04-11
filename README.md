@@ -15,3 +15,8 @@ Script permetant le renomage automatique des film et série.
 
 *Description* :  
 Script permetant de déplacer les dossier et ce qui si trouve dans les disques dépendament de l'espace restant
+
+### Minecraft Serveur launcher
+
+*Description* :  
+Script permetant de crer, lancer, arreter un serveur minecraft

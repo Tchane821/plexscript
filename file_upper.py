@@ -23,7 +23,7 @@ if not isdir(destination):
         exit(1)
 
 if not isdir(racine):
-    print("Error : the root argument is't not correct\n")
+    print("Error : the root argument isn't correct\n")
     exit(2)
 
 # extraction
@@ -43,7 +43,7 @@ print(f"Log: File video Found: {len(path_to_file_video_list)}\n"
       f"(Yes | No)\n\t -> ", end='')
 rep = input()
 if rep.upper() == "NO" or rep.upper() == "N":
-    print("Log: end of script with no erreor")
+    print("Log: end of script with no error")
     exit(0)
 elif rep.upper() == "YES" or rep.upper() == "Y":
     print("Log: Launch move")

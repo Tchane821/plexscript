@@ -19,4 +19,4 @@ Script permetant de déplacer les dossier et ce qui si trouve dans les disques d
 ### Minecraft Serveur launcher
 
 *Description* :  
-Script permetant de crer, lancer, arreter un serveur minecraft
+Script permetant de crer, lancer, arreter, supprimer un serveur minecraft

@@ -2,7 +2,7 @@ import os
 import shutil
 import sys
 
-# 3 actions : MAKE START STOP
+# 4 actions : MAKE START STOP REMOVE
 
 if len(sys.argv) < 2:
     print("Log: Error: bad argument")
@@ -14,6 +14,7 @@ if action.lower() not in ["make", "start", "stop"]:
     exit(2)
 
 if "-h" in sys.argv:
+    # TODO
     print("help !")
 
 # make

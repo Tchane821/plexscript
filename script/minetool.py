@@ -38,15 +38,24 @@ if action == "make":
     feula = f"{f_ressource}/eula.txt"
     try:
         shutil.copy(fjar_version, f"./{f_name}")
-        shutil.copy(fjar_version, f"./{f_name}")
+        shutil.copy(feula, f"./{f_name}")
     except OSError:
         print("Log: Error: Can't move serveur jarfile and/or eula in destination")
         exit(5)
 
+# start
 elif action == "start":
+    # TODO
     pass
 
+# start
 elif action == "stop":
+    # TODO
+    pass
+
+# remove
+elif action == "remove":
+    # TODO
     pass
 
 

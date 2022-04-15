@@ -135,7 +135,7 @@ elif action == "start":
     # find java
     f_ouestjava = f"{f_source}/ouestjava.txt"
     with open(f_ouestjava) as oej:
-        java = oej.readline()
+        java = oej.readline()[:-1]
 
     commande = f"{java} -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo -nogui"
     if gui:

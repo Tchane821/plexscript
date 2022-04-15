@@ -4,7 +4,6 @@ import sys
 import glob
 
 # magic number
-
 RAMMIN = "512"
 RAMMAX = "4096"
 GUI = "FALSE"
@@ -37,7 +36,7 @@ if len(sys.argv) < 2:
     exit(1)
 
 for a in sys.argv:
-    if a in help_flags:
+    if a.lower() in help_flags:
         print(HELP)
         exit(0)
 
@@ -160,10 +159,13 @@ elif action == "remove":
     else:
         f_name_r = sys.argv[2]
     try:
-        shutil.rmtree(f_name_r)
+        r1 = input(f"Are you sure to del {f_name_r} (Yes/No) ??? \n\t ->")
+        if r1.lower() in ["y", "yes"]:
+            r2 = input(f"Realy sure !? (Yes/No)\n\t ->")
+            if r2.lower() in ["y", "yes"]:
+                shutil.rmtree(f_name_r)
+        print("Log: action done")
+        exit(0)
     except OSError:
         print("Log: Error: Can't remove some files")
         exit(6)
-
-print("Log: action done")
-exit(0)

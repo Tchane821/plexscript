@@ -8,7 +8,7 @@ import glob
 RAMMIN = "512"
 RAMMAX = "4096"
 GUI = "FALSE"
-f_source = "./mcressouces"
+f_source = "./mcressources"
 help_flags = ["-h", "h", "help"]
 HELP = "----- Help to minecraft serveur tool -----\n" \
        " You can call mine-tool with 4 actions:\n" \

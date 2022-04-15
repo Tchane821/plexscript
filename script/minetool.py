@@ -139,7 +139,7 @@ elif action == "start":
 
     commande = f"{java} -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo -nogui"
     if gui:
-        commande = f"java -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo"
+        commande = f"{java} -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo"
     print(f"Log: launch commande : {commande}")
     os.system(commande)
 

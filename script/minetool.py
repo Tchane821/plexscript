@@ -137,11 +137,13 @@ elif action == "start":
     with open(f_ouestjava) as oej:
         java = oej.readline()[:-1]
 
-    commande = f"{java} -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo -nogui"
+    os.chdir(f"./{f_name_l}")
+    commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {f_jar} -nogui"
     if gui:
-        commande = f"{java} -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo"
+        commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {f_jar}"
     print(f"Log: launch commande : {commande}")
     os.system(commande)
+    exit(0)
 
 
 # --- Stop -------------------------------------------------------------------------------------------------------------

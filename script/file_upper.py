@@ -65,5 +65,6 @@ for f in path_to_file_video_list:
         os.rename(f, f_res)
     v += 1
 
+# fin
 print("Log: End of script with no error")
 exit(0)

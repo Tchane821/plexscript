@@ -5,8 +5,8 @@ import glob
 
 # magic number
 
-RAMMIN = 512
-RAMMAX = 4096
+RAMMIN = "512"
+RAMMAX = "4096"
 GUI = "FALSE"
 help_flags = ["-h", "h", "help"]
 HELP = "----- Help to minecraft serveur tool -----\n" \
@@ -130,9 +130,9 @@ elif action == "start":
         print("Log: Error: wrong directory name")
         exit(10)
 
-    commande = f"java -jar ./{f_jar} -Xmx {ram_max} -Xms {ram_min} -nogui"
+    commande = f"java -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo -nogui"
     if gui:
-        commande = f"java -jar ./{f_jar} -Xmx {ram_max} -Xms {ram_min}"
+        commande = f"java -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo"
     print(f"Log: launch commande : {commande}")
     os.system(commande)
 

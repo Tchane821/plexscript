@@ -8,15 +8,15 @@ import glob
 RAMMIN = "512"
 RAMMAX = "4096"
 GUI = "FALSE"
+f_source = "./mcressouces"
 help_flags = ["-h", "h", "help"]
 HELP = "----- Help to minecraft serveur tool -----\n" \
        " You can call mine-tool with 4 actions:\n" \
        " make / start / stop / remove\n" \
        "\n" \
-       "Make take 3 arguments:\n" \
+       "Make take 2 arguments:\n" \
        " 1.> Name of your serveur name \n" \
-       " 2.> Path of source folder\n" \
-       " 3.> version of minecarft you want\n" \
+       " 2.> version of minecarft you want\n" \
        "\n" \
        "Start take 1 or 4 arguments\n" \
        " 1.> name of your serveur\n" \
@@ -46,17 +46,19 @@ if action.lower() not in ["make", "start", "stop", "remove"]:
     print("Log: Error: bad action")
     exit(2)
 
+if os.path.isdir(f_source):
+    print("Source file not found !")
+    exit(999)
+
 # --- Make -------------------------------------------------------------------------------------------------------------
 if action == "make":
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 4:
         print("Log: not enought argument to launch")
         f_name = input("Nom du dossier/du serveur\n\t ->")
-        f_ressource = input("Chemin du dossier ressource\n\t ->")
         name_version = input("Version de minecraft\n\t ->")
     else:
         f_name = sys.argv[2]
-        f_ressource = sys.argv[3]
-        name_version = sys.argv[4]
+        name_version = sys.argv[3]
 
     try:
         os.mkdir(f_name)
@@ -64,8 +66,8 @@ if action == "make":
         print("Log: Error: Can't create the minecraft serveur directorie")
         exit(4)
 
-    fjar_version = f"{f_ressource}/{name_version}.jar"
-    feula = f"{f_ressource}/eula.txt"
+    fjar_version = f"{f_source}/{name_version}.jar"
+    feula = f"{f_source}/eula.txt"
     try:
         shutil.copy(fjar_version, f"./{f_name}")
         shutil.copy(feula, f"./{f_name}")
@@ -130,7 +132,12 @@ elif action == "start":
         print("Log: Error: wrong directory name")
         exit(10)
 
-    commande = f"java -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo -nogui"
+    # find java
+    f_ouestjava = f"{f_source}/ouestjava.txt"
+    with open(f_ouestjava) as oej:
+        java = oej.readline()
+
+    commande = f"{java} -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo -nogui"
     if gui:
         commande = f"java -jar ./{f_jar} -Xmx {ram_max}Mo -Xms {ram_min}Mo"
     print(f"Log: launch commande : {commande}")

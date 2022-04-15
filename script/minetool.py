@@ -138,9 +138,9 @@ elif action == "start":
         java = oej.readline()[:-1]
 
     os.chdir(f"./{f_name_l}")
-    commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {f_jar} -nogui"
+    commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {os.path.basename(f_jar)} -nogui"
     if gui:
-        commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {f_jar}"
+        commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {os.path.basename(f_jar)}"
     print(f"Log: launch commande : {commande}")
     os.system(commande)
     exit(0)

@@ -46,7 +46,7 @@ if action.lower() not in ["make", "start", "stop", "remove"]:
     print("Log: Error: bad action")
     exit(2)
 
-if os.path.isdir(f_source):
+if not os.path.isdir(f_source):
     print("Source file not found !")
     exit(999)
 

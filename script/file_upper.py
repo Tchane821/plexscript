@@ -32,7 +32,6 @@ path_to_file_list = glob.glob(racine + "/**", recursive=True)
 # Filter video only
 path_to_file_video_list = []
 for path_to_file in path_to_file_list:
-
     if ".mkv" in path_to_file or ".avi" in path_to_file or ".mp4" in path_to_file:
         path_to_file_video_list.append(path_to_file)
         print(path_to_file)

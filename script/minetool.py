@@ -101,15 +101,17 @@ elif action == "start":
         print("Log: not enought argument to launch")
         f_name_s = input("Nom du dossier/du serveur a lancer\n\t ->")
         print(f"Log: Default value for MinRam = {RAMMIN}, MaxRan = {RAMMAX}, gui = {GUI}")
-    else:
+    elif len(sys.argv) == 3:
         f_name_s = sys.argv[2]
-        if len(sys.argv) == 6:
-            ram_min = sys.argv[3]
-            ram_max = sys.argv[4]
-            gui = sys.argv[5]
-        else:
-            print("Log: Error: Not correct numbers of arguments")
-            badend(21)
+        print(f"Log: Default value for MinRam = {RAMMIN}, MaxRan = {RAMMAX}, gui = {GUI}")
+    elif len(sys.argv) == 6:
+        f_name_s = sys.argv[2]
+        ram_min = sys.argv[3]
+        ram_max = sys.argv[4]
+        gui = sys.argv[5]
+    else:
+        print("Log: Error: Not correct numbers of arguments")
+        badend(21)
 
     # argument check
     if not ram_min.isdigit() or not ram_max.isdigit():

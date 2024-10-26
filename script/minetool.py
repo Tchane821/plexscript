@@ -44,6 +44,7 @@ def badend(i):
 
 if len(sys.argv) < 2:
     print("Log: Error: bad argument")
+    print(HELP)
     badend(1)
 
 for a in sys.argv:

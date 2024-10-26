@@ -23,7 +23,7 @@ HELP = "----- Help to minecraft serveur tool -----\n" \
        " 3*> quantity of ram Max in Mo\n" \
        " 4*> need gui True or False\n" \
        "\n" \
-       "List Not implemented yet\n" \
+       "List no take argument\n" \
        "\n" \
        "Remove take 1 argumets:\n" \
        " 1.> name of serveur\n" \
@@ -52,7 +52,7 @@ for a in sys.argv:
         goodend()
 
 action = sys.argv[1]
-if action.lower() not in ["make", "start", "remove"]:
+if action.lower() not in ["make", "start", "list", "remove"]:
     print("Log: Error: bad action")
     badend(2)
 

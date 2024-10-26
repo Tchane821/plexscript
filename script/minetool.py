@@ -11,7 +11,7 @@ f_source = "./mcressources"
 help_flags = ["-h", "h", "help"]
 HELP = "----- Help to minecraft serveur tool -----\n" \
        " You can call mine-tool with 4 actions:\n" \
-       " make / start / stop / remove\n" \
+       " make / start / list / remove\n" \
        "\n" \
        "Make take 2 arguments:\n" \
        " 1.> Name of your serveur name \n" \
@@ -23,7 +23,7 @@ HELP = "----- Help to minecraft serveur tool -----\n" \
        " 3*> quantity of ram Max in Mo\n" \
        " 4*> need gui True or False\n" \
        "\n" \
-       "Stop Not implemented yet\n" \
+       "List Not implemented yet\n" \
        "\n" \
        "Remove take 1 argumets:\n" \
        " 1.> name of serveur\n" \
@@ -40,7 +40,7 @@ def badend(i):
     exit(i)
 
 
-# 4 actions : MAKE START REMOVE
+# 4 actions : MAKE START LIST REMOVE
 
 if len(sys.argv) < 2:
     print("Log: Error: bad argument")
@@ -63,7 +63,7 @@ if not os.path.isdir(f_source):
 # --- Make -------------------------------------------------------------------------------------------------------------
 if action == "make":
     if len(sys.argv) != 4:
-        print("Log: not enought argument to launch")
+        print("Log: not enough argument to launch")
         f_name_m = input("Nom du dossier du serveur\n\t ->")
         name_version = input("Version de minecraft\n\t ->")
     else:
@@ -74,17 +74,17 @@ if action == "make":
     try:
         os.mkdir(f_name_m)
     except OSError:
-        print("Log: Error: Can't create the minecraft serveur directorie")
+        print("Log: Error: Can't create the minecraft serveur directory")
         badend(11)
 
     # copy file you need
-    fjar_version = f"{f_source}/{name_version}.jar"
+    f_jar_version = f"{f_source}/{name_version}.jar"
     feula = f"{f_source}/eula.txt"
     try:
-        shutil.copy(fjar_version, f"./{f_name_m}")
+        shutil.copy(f_jar_version, f"./{f_name_m}")
         shutil.copy(feula, f"./{f_name_m}")
     except OSError:
-        print("Log: Error: Can't move serveur jarfile and/or eula in destination")
+        print("Log: Error: Can't move serveur jar file and/or eula in destination")
         badend(12)
 
 
@@ -159,13 +159,21 @@ elif action == "start":
 
     # launch commande
     os.chdir(f"./{f_name_s}")
-    commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {os.path.basename(f_jar)} -nogui"
     if gui:
         commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {os.path.basename(f_jar)}"
+    else:
+        commande = f"{java} -Xmx{ram_max}M -Xms{ram_min}M -jar {os.path.basename(f_jar)} -nogui"
     print(f"Log: launch commande : {commande}")
     os.system(commande)
     goodend()
 
+# --- List -------------------------------------------------------------------------------------------------------------
+elif action == "list":
+    l_dir = os.listdir()
+    l_dir.sort()
+    l_dir.remove("mcressources")
+    for d in l_dir:
+        print(d)
 
 # --- Remove -----------------------------------------------------------------------------------------------------------
 elif action == "remove":
